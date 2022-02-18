@@ -290,7 +290,7 @@ class OidcStaffAuthBackend extends ExternalStaffAuthenticationBackend {
 
     function getName() {
         $config = $this->config;
-        list($__, $_N) = $config::translate();
+        list($__, $_N) = $config->translate();
         return $__(static::$name);
     }
 
@@ -332,7 +332,7 @@ class OidcUserAuthBackend extends ExternalUserAuthenticationBackend {
 
     function getName() {
         $config = $this->config;
-        list($__, $_N) = $config::translate();
+        list($__, $_N) = $config->translate();
         return $__(static::$name);
     }
 
