@@ -1,7 +1,7 @@
 <?php
 return array(
     'id' =>             'auth:oidc', # notrans
-    'version' =>        '0.1',
+    'version' =>        '0.2',
     'name' =>           /* trans */ 'OpenID Connect Authentication',
     'author' =>         'Ben Miller',
     'description' =>    /* trans */ 'Provides a configurable authentication

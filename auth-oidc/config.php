@@ -17,6 +17,13 @@ class OidcPluginConfig extends PluginConfig {
     }
 
     function getOptions() {
+        $name = 'OpenID Connect Authentication';
+        if (isset($this->instance)) {
+            $bk = 'oidc.client.p'.$this->instance->ht['plugin_id'].'i'.$this->instance->ht['id'];
+        } else {
+            $bk = 'oidc.client';
+        }
+
         list($__, $_N) = self::translate();
         $modes = new ChoiceField(array(
             'label' => $__('Authentication'),
@@ -31,7 +38,7 @@ class OidcPluginConfig extends PluginConfig {
 
         return array(
             'oidc' => new SectionBreakField(array(
-                'label' => $__('OpenID Connect Authentication'),
+                'label' => $__($name),
             )),
             'oidc-url' => new TextboxField(array(
                 'label' => $__('OIDC Provider URL'),
@@ -49,12 +56,12 @@ class OidcPluginConfig extends PluginConfig {
             'oidc-user-redirect' => new TextboxField(array(
                 'label' => $__('OIDC User Login Redirect URL'),
                 'configuration' => array('size'=>60, 'length'=>100),
-                'hint' => $__('Try https://yourdomain/login.php?do=ext&bk=oidc.client'),
+                'hint' => $__('Try https://yourdomain/login.php?do=ext&bk='.$bk),
             )),
             'oidc-staff-redirect' => new TextboxField(array(
                 'label' => $__('OIDC Staff Login Redirect URL'),
                 'configuration' => array('size'=>60, 'length'=>100),
-                'hint' => $__('Try https://yourdomain/scp/login.php?do=ext&bk=oidc.client'),
+                'hint' => $__('Try https://yourdomain/scp/login.php?do=ext&bk='.$bk),
             )),
             'oidc-departments-key' => new TextboxField(array(
                 'label' => $__('OIDC Departments Key'),
